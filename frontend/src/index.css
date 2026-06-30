@@ -44,7 +44,7 @@
 
     --radius: 0.75rem;
   }
-
+   
   .dark {
     /* ---- Dark theme ---- */
     --background: 210 32% 8%;
@@ -86,7 +86,7 @@
     --radius: 0.75rem;
   }
 }
-
+/* Layer Base of Frontend   */
 @layer base {
   * {
     @apply border-border;
