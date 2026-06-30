@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as React from "react";
 import { useState } from "react";
-
+// Update QueryProvider
 export function QueryProvider({ children }: { children: React.ReactNode }) {
   const [client] = useState(
     () =>
