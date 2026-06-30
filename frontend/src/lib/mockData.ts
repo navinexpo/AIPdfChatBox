@@ -45,7 +45,7 @@ export function createMockDocument(
   mockStore.documents.unshift(doc);
   return doc;
 }
-
+// Create Mock Chat
 export function createMockChat(userId: string, title: string, documentIds: string[]): Chat {
   const chat: Chat = {
     id: uuidv4(),
