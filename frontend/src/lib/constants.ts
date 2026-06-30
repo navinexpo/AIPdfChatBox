@@ -11,7 +11,7 @@ export const ACCEPTED_FILE_TYPES = {
   markdown: { mime: "text/markdown", ext: ".md", label: "Markdown" },
   txt: { mime: "text/plain", ext: ".txt", label: "Text" },
 } as const;
-
+// Max PDF SIze
 export const MAX_FILE_SIZE_MB = 25;
 export const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 
