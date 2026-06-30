@@ -1,0 +1,4 @@
+# Ignore generated data but keep the folders
+chroma/
+storage/
+!.gitkeep

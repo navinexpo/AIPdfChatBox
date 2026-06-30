@@ -1,0 +1,72 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: docked
+      POSTGRES_PASSWORD: docked
+      POSTGRES_DB: docked
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U docked -d docked"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    # To use GPU, uncomment:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - capabilities: [gpu]
+
+  backend:
+    build: ./backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgresql+asyncpg://docked:docked@postgres:5432/docked
+      DATABASE_URL_SYNC: postgresql+psycopg2://docked:docked@postgres:5432/docked
+      CHROMA_PERSIST_DIR: /data/chroma
+      STORAGE_DIR: /data/storage
+      OLLAMA_BASE_URL: http://ollama:11434
+      OLLAMA_DEFAULT_MODEL: llama3:8b
+      EMBEDDING_MODEL: BAAI/bge-small-en-v1.5
+      EMBEDDING_DEVICE: cpu
+      CORS_ORIGINS: http://localhost:5173,http://localhost:8080
+      MAX_UPLOAD_SIZE_MB: "25"
+      LOG_LEVEL: INFO
+    volumes:
+      - backend_data:/data
+    ports:
+      - "8000:8000"
+
+  frontend:
+    image: node:20-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    environment:
+      VITE_USE_MOCK_API: "false"
+      VITE_API_BASE_URL: "/api"
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+  ollama:
+  backend_data:
