@@ -1,7 +1,7 @@
 """Token-approximate sliding-window chunker (word-based)."""
 from typing import List
 
-
+# Chunk Size
 def chunk_text(text: str, chunk_size: int = 500, overlap: int = 80) -> List[str]:
     if not text or not text.strip():
         return []
