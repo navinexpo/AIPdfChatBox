@@ -34,7 +34,7 @@ def embed_texts(texts: List[str]) -> List[List[float]]:
     m = _get_model()
     return m.encode(texts, normalize_embeddings=True, show_progress_bar=False).tolist()
 
-
+# Embedding Query
 def embed_query(query: str) -> List[float]:
     m = _get_model()
     return m.encode([_QUERY_INSTRUCTION + query], normalize_embeddings=True, show_progress_bar=False).tolist()[0]
