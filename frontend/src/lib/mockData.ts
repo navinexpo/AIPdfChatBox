@@ -1,12 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import type { AppDocument, Chat, ChatMessage, DocumentType } from "@/types";
 
-/**
- * In-memory mock "database". This module exists purely so the UI is fully
- * interactive without a backend. Every shape here matches the real
- * PostgreSQL tables described in BACKEND_IMPLEMENTATION_GUIDE.md, so
- * `lib/api.ts` can be repointed at FastAPI later with no UI changes.
- */
 
 class MockStore {
   documents: AppDocument[] = [];

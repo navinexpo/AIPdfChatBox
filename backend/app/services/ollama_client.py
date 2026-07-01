@@ -30,8 +30,7 @@ async def generate(prompt: str, model: str | None = None, timeout: float = 180.0
         )
         r.raise_for_status()
         return r.json().get("response", "") or ""
-
-
+# Ollama Feature
 async def health() -> bool:
     try:
         async with httpx.AsyncClient(timeout=5.0) as client:
