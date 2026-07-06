@@ -127,7 +127,7 @@
     background: transparent;
   }
 }
-
+/*  Perform Animation Feature  */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
