@@ -10,6 +10,7 @@ function App() {
       <QueryProvider>
         <TooltipProvider delayDuration={200}>
           <MainLayout />
+          // Implement Toaster
           <Toaster position="top-center" />
         </TooltipProvider>
       </QueryProvider>
