@@ -19,7 +19,7 @@ export const useAppStore = create<AppState>((set) => ({
 
   isMobileSidebarOpen: false,
   setMobileSidebarOpen: (open) => set({ isMobileSidebarOpen: open }),
-
+// Enhance Selected Document
   selectedDocumentIds: [],
   toggleSelectedDocument: (id) =>
     set((state) => ({
