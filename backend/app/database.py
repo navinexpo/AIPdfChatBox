@@ -7,7 +7,7 @@ from app.config import settings
 class Base(DeclarativeBase):
     pass
 
-
+# Database Local Session
 engine = create_async_engine(settings.database_url, pool_pre_ping=True, future=True)
 SessionLocal = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
