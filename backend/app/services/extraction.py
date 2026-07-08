@@ -22,7 +22,7 @@ def extract_pdf(path: str) -> List[Dict[str, Any]]:
         reader = PdfReader(path)
         return [{"page": i + 1, "text": p.extract_text() or ""} for i, p in enumerate(reader.pages)]
 
-
+# Enforce Native Document from DocxDocument
 def extract_docx(path: str) -> str:
     from docx import Document as DocxDocument
     doc = DocxDocument(path)
