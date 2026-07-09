@@ -21,9 +21,7 @@ export const LOCAL_STORAGE_KEYS = {
   theme: "docked.theme",
 } as const;
 
-/** Base path for API calls. In dev this is proxied to FastAPI by Vite
- *  (see vite.config.ts). In production, point this at your deployed
- *  backend via VITE_API_BASE_URL. */
+/** Match API Routing Prefixs **/ 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "/api";
 
 /** Toggle between mock data (default, for frontend-only development)
