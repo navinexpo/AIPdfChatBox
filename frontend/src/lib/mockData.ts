@@ -54,8 +54,6 @@ export function createMockChat(userId: string, title: string, documentIds: strin
   return chat;
 }
 
-/** Generates a plausible canned answer referencing uploaded documents,
- *  standing in for the real Ollama + ChromaDB RAG response. */
 export function generateMockAnswer(question: string, documents: AppDocument[]): {
   content: string;
   citations: ChatMessage["citations"];
