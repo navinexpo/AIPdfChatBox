@@ -5,7 +5,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 from app.database import Base
 
-
+# Chat Base
 class Chat(Base):
     __tablename__ = "chats"
 
